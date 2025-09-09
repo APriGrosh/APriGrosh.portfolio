@@ -12,7 +12,6 @@
       background-color: #f5f5f5;
       color: #333;
     }
-
     /* Navbar */
     .navbar {
       display: flex;
@@ -22,13 +21,11 @@
       padding: 1rem;
       position: relative;
     }
-
     .menu-icon {
       font-size: 1.8rem;
       cursor: pointer;
       user-select: none;
     }
-
     /* Dropdown Menu */
     .dropdown {
       display: none;
@@ -41,29 +38,24 @@
       overflow: hidden;
       z-index: 10;
     }
-
     .dropdown a {
       display: block;
       padding: 12px 20px;
       text-decoration: none;
       color: black;
     }
-
     .dropdown a:hover {
       background-color: #ddd;
     }
-
     /* Hero section */
     .hero {
       text-align: center;
       padding: 4rem 2rem;
       background: white;
     }
-
     .hero h1 {
       font-size: 2.5rem;
     }
-
     .hero p {
       font-size: 1.2rem;
     }
@@ -74,15 +66,15 @@
   <nav class="navbar">
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
     <div class="dropdown" id="dropdownMenu">
-      <a href="#about">About</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-      <a href="#contact">Photography (for fun)</a>
+      <a href="#home" onclick="closeMenu()">Home</a>
+      <a href="#about" onclick="closeMenu()">About</a>
+      <a href="#projects" onclick="closeMenu()">Projects</a>
+      <a href="#activities" onclick="closeMenu()">Activities</a>
+      <a href="#contact" onclick="closeMenu()">Contact</a>
     </div>
   </nav>
-
   <!-- Hero Section -->
-  <section class="hero">
+  <section class="hero" id="home">
     <h1>Welcome to My Portfolio</h1>
     <p>Showcasing my projects and skills.</p>
   </section>
@@ -90,23 +82,31 @@
   <!-- Sections -->
   <section id="about" style="padding: 2rem; background:#eee;">
     <h2>About Me</h2>
-    <p>Life long Washingtonian, future software engineer, currnent student. </p>
+    <p>Life long Washingtonian, future software engineer, current student. </p>
   </section>
 
   <section id="projects" style="padding: 2rem; background:#fff;">
     <h2>Projects</h2>
-    <p>Here are some of my main projects: Chess Engine, randomized custom image generator, interactive map, chat bot (in progress), survival video game (in progress, name TBD).</p>
+    <p>Main projects: Chess Engine, randomized custom image generator, interactive map, chat bot (in progress), survival video game (in progress, name TBD).</p>
   </section>
 
-  <section id="contact" style="padding: 2rem; background:#eee;">
+  <section id="activities" style="padding: 2rem; background:#eee;">
+    <h2>Activities</h2>
+    <p>Chess club member, DECA state qualifier, volunteer lacrosse coach, and more (add more later)</p>
+  </section>
+
+  <section id="contact" style="padding: 2rem; background:#fff;">
     <h2>Contact</h2>
-    <p>Email: yourname@example.com</p>
+    <p>Email: name@gmail.com (fill out later)</p>
   </section>
-
   <script>
     function toggleMenu() {
       const menu = document.getElementById('dropdownMenu');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block'
+    }
+    function closeMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = 'none';
     }
   </script>
 </body>
