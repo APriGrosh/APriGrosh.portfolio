@@ -3,134 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>APriGrosh - Landing Page</title>
+  <title>Andrew Privitera-Groshong | Portfolio</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #d3d3d3; /* overall page background */
-      color: black;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
     }
-    nav {
+
+    /* Navbar */
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      background: #d3d3d3; /* navbar matches background */
-      position: sticky;
-      top: 0;
-    }
-    nav h1 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 1.5rem;
-      margin: 0;
-      padding: 0;
-    }
-    nav ul li {
+      background-color: #d3d3d3;
+      padding: 1rem;
       position: relative;
     }
-    nav ul li a {
-      text-decoration: none;
-      color: black;
-      font-weight: bold;
-      padding: 0.5rem;
-      display: block;
+
+    .menu-icon {
+      font-size: 1.8rem;
+      cursor: pointer;
+      user-select: none;
     }
-    /* Dropdown container */
-    nav ul li ul {
+
+    /* Dropdown Menu */
+    .dropdown {
       display: none;
       position: absolute;
-      top: 100%;
-      left: 0;
-      background: #f1f1f1;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      min-width: 160px;
-      border-radius: 4px;
-      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+      top: 60px;
+      left: 10px;
+      background-color: #fff;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      border-radius: 8px;
+      overflow: hidden;
+      z-index: 10;
     }
-    nav ul li ul li a {
-      padding: 0.5rem 1rem;
-      font-weight: normal;
-    }
-    nav ul li:hover ul {
+
+    .dropdown a {
       display: block;
-    }
-    nav ul li ul li a:hover {
-      background: #ddd;
-    }
-    .hero {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      padding: 0 2rem;
-      background: white;
+      padding: 12px 20px;
+      text-decoration: none;
       color: black;
     }
-    .hero h2 {
-      font-size: 2.5rem;
-      margin: 0.5rem 0;
+
+    .dropdown a:hover {
+      background-color: #ddd;
     }
+
+    /* Hero section */
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: white;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
     .hero p {
       font-size: 1.2rem;
-      margin: 1rem 0;
-      max-width: 600px;
-    }
-    .cta-button {
-      background: #ffcc00;
-      color: #1e3c72;
-      padding: 0.8rem 1.5rem;
-      font-size: 1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-    .cta-button:hover {
-      background: #ffdb4d;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.5);
-      color: white;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <h1>Logo (Temp)</h1>
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li>
-        <a href="#projects">Projects ▼</a>
-        <ul>
-          <li><a href="#project1">Chess Engine</a></li>
-          <li><a href="#project2">NFT Project</a></li>
-          <li><a href="#project3">AI Apps</a></li>
-          <li><a href="#project4">Data Visualization</a></li>
-        </ul>
-      </li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    <div class="dropdown" id="dropdownMenu">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
   </nav>
+
+  <!-- Hero Section -->
   <section class="hero">
-    <h2>Hello, I’m <span style="color:#ffcc00;">APriGrosh</span></h2>
-    <p>Welcome to my website!</p>
-    <button class="cta-button">Explore More</button>
+    <h1>Welcome to My Portfolio</h1>
+    <p>Showcasing my projects and skills.</p>
   </section>
-  <footer>
-    <p>© 2025 APriGrosh. All Rights Reserved.</p>
-  </footer>
+
+  <!-- Sections -->
+  <section id="about" style="padding: 2rem; background:#eee;">
+    <h2>About Me</h2>
+    <p>This is where you’ll add details about yourself.</p>
+  </section>
+
+  <section id="projects" style="padding: 2rem; background:#fff;">
+    <h2>Projects</h2>
+    <p>Here are some of my main projects: Chess Engine, NFT Project, AI Apps, Data Visualization, etc.</p>
+  </section>
+
+  <section id="contact" style="padding: 2rem; background:#eee;">
+    <h2>Contact</h2>
+    <p>Email: yourname@example.com</p>
+  </section>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('dropdownMenu');
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
 </body>
 </html>
