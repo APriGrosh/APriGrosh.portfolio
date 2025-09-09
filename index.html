@@ -8,7 +8,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #d3d3d3;
+      background: #d3d3d3; /* overall page background */
       color: black;
     }
     nav {
@@ -16,7 +16,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: #d3d3d3;
+      background: #d3d3d3; /* navbar matches background */
       position: sticky;
       top: 0;
     }
@@ -31,10 +31,39 @@
       margin: 0;
       padding: 0;
     }
+    nav ul li {
+      position: relative;
+    }
     nav ul li a {
       text-decoration: none;
       color: black;
       font-weight: bold;
+      padding: 0.5rem;
+      display: block;
+    }
+    /* Dropdown container */
+    nav ul li ul {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #f1f1f1;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      min-width: 160px;
+      border-radius: 4px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+    }
+    nav ul li ul li a {
+      padding: 0.5rem 1rem;
+      font-weight: normal;
+    }
+    nav ul li:hover ul {
+      display: block;
+    }
+    nav ul li ul li a:hover {
+      background: #ddd;
     }
     .hero {
       display: flex;
@@ -74,6 +103,7 @@
       text-align: center;
       padding: 1rem;
       background: rgba(0, 0, 0, 0.5);
+      color: white;
     }
   </style>
 </head>
@@ -82,7 +112,15 @@
     <h1>Logo (Temp)</h1>
     <ul>
       <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li>
+        <a href="#projects">Projects ▼</a>
+        <ul>
+          <li><a href="#project1">Chess Engine</a></li>
+          <li><a href="#project2">NFT Project</a></li>
+          <li><a href="#project3">AI Apps</a></li>
+          <li><a href="#project4">Data Visualization</a></li>
+        </ul>
+      </li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
