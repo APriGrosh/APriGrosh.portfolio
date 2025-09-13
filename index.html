@@ -11,6 +11,7 @@
       padding: 0;
       background-color: #f5f5f5;
       color: #333;
+      scroll-behavior: smooth;
     }
     /* Navbar */
     .navbar {
@@ -18,8 +19,9 @@
       justify-content: space-between;
       align-items: center;
       background-color: #d3d3d3;
-      padding: 1rem;
+      padding: 1rem 2rem;
       position: relative;
+      z-index: 100;
     }
     .menu-icon {
       font-size: 1.8rem;
@@ -49,62 +51,105 @@
     }
     /* Hero section */
     .hero {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  position: relative;
-}
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 1rem;
-}
-.hero p {
-  font-size: 1.5rem;
-  opacity: 0.85;  /* subtle fade for secondary text */
-}
-
-     #home {
-      background-image: url("IMG_0374.jpeg"); 
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      color: white;
-      height: 100vh; 
-      display: flex; 
+      display: flex;
       justify-content: center;
       align-items: center;
       text-align: center;
-
+      background-image: url("IMG_0374.jpeg");
+      background-size: cover;
+      background-position: center;
+      color: white;
+      height: 100vh;
+      position: relative;
     }
-
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.5rem;
+      opacity: 0.85;
+    }
+    /* Sections */
     section {
-  width: 90%;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 4rem 2rem;
-  background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  box-sizing: border-box;
-}
-
-section h2 {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-
-section p {
-  max-width: 800px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
-}
-    
+      width: 90%;
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 4rem 2rem;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      box-sizing: border-box;
+    }
+    section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    section p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    /* Project Thumbnails */
+    .video-thumb-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .video-thumb {
+      cursor: pointer;
+      border-radius: 8px;
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .video-thumb:hover {
+      transform: scale(1.05);
+    }
+    .video-thumb img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .video-thumb p {
+      margin-top: 0.5rem;
+      font-weight: 500;
+    }
+    /* Fullscreen Video Modal */
+    #videoModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    #modalVideo {
+      width: 90%;
+      height: 90%;
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+      }
+      .video-thumb img {
+        width: 150px;
+        height: 150px;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .hero p {
+        font-size: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -122,80 +167,66 @@ section p {
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div>
-    <h1>Welcome to My Portfolio</h1>
-    <p>Image: Fields by Andrew Privitera-Groshong</p>
+      <h1>Welcome to My Portfolio</h1>
+      <p>Image: Fields by Andrew Privitera-Groshong</p>
     </div>
   </section>
-
-  <!-- Sections -->
-  <section id="about" 2rem; background:#eee;">
+  <!-- About Section -->
+  <section id="about">
     <h2>About Me</h2>
-    <p>Life long Washingtonian, future software engineer, current student. </p>
+    <p>Life long Washingtonian, future software engineer, current student.</p>
   </section>
-
- <section id="projects" 2rem; background:#fff;">
-  <h2>Projects</h2>
-  <p>Hint: Click each projects thumbnail</p>
-
-  <!-- Video Thumbnail -->
-  <!-- Temporary Code -->
-  <div 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-  <div class="video-thumb" onclick="openVideo('https://youtube.com/shorts/Ss30QpkAA4I?feature=share')" style="cursor:pointer;">
-  <img src="https://img.youtube.com/vi/Ss30QpkAA4I/hqdefault.jpg" 
-       alt="Project Video"
-       style="width:150px; height:150px; object-fit: cover; border-radius: 8px;">
-  <p style="text-align:center; margin-top:5px;">Chess Engine</p>
-</div>
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <p>Hint: Click each project's thumbnail</p>
+    <div class="video-thumb-container">
+      <div class="video-thumb" onclick="openVideo('https://youtube.com/shorts/Ss30QpkAA4I?feature=share')">
+        <img src="https://img.youtube.com/vi/Ss30QpkAA4I/hqdefault.jpg" alt="Project Video">
+        <p>Chess Engine</p>
+      </div>
+    </div>
+  </section>
+  <!-- Fullscreen Video Modal -->
+  <div id="videoModal">
+    <iframe id="modalVideo" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    <span onclick="closeVideo()" style="position:absolute; top:20px; right:30px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
   </div>
-  </div>
-</section>
-
-<!-- Fullscreen Video Modal -->
-<div id="videoModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); justify-content:center; align-items:center; z-index:1000;">
-  <iframe id="modalVideo" width="90%" height="90%" src="" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
-  <span onclick="closeVideo()" style="position:absolute; top:20px; right:30px; font-size:2rem; color:white; cursor:pointer;">&times;</span>
-</div>
-
-<script>
-  function openVideo(videoURL) {
-    const modal = document.getElementById('videoModal');
-    const modalVideo = document.getElementById('modalVideo');
-    modal.style.display = 'flex';
-    
-    // Convert YouTube URL to embed format
-    let embedURL = videoURL;
-    if(videoURL.includes("youtube.com") || videoURL.includes("youtu.be")){
-      const videoID = videoURL.split('/').pop().split('?')[0];
-      embedURL = `https://www.youtube.com/embed/${videoID}?autoplay=1`;
-    }
-    modalVideo.src = embedURL;
-  }
-
-  function closeVideo() {
-    const modal = document.getElementById('videoModal');
-    const modalVideo = document.getElementById('modalVideo');
-    modalVideo.src = ''; // stop the video
-    modal.style.display = 'none';
-  }
-</script>
-
-  <section id="activities" style="padding: 2rem; background:#eee;">
+  <!-- Activities Section -->
+  <section id="activities">
     <h2>Activities</h2>
     <p>Chess club member, DECA state qualifier, volunteer lacrosse coach, and more (add more later)</p>
   </section>
-
-  <section id="contact" style="padding: 2rem; background:#fff;">
+  <!-- Contact Section -->
+  <section id="contact">
     <h2>Contact</h2>
     <p>No please don't</p>
   </section>
   <script>
     function toggleMenu() {
       const menu = document.getElementById('dropdownMenu');
-      menu.style.display = menu.style.display === 'block' ? 'none' : 'block'
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
     }
     function closeMenu() {
       const menu = document.getElementById('dropdownMenu');
       menu.style.display = 'none';
+    }
+    function openVideo(videoURL) {
+      const modal = document.getElementById('videoModal');
+      const modalVideo = document.getElementById('modalVideo');
+      modal.style.display = 'flex';
+      let embedURL = videoURL;
+      if(videoURL.includes("youtube.com") || videoURL.includes("youtu.be")){
+        const videoID = videoURL.split('/').pop().split('?')[0];
+        embedURL = `https://www.youtube.com/embed/${videoID}?autoplay=1`;
+      }
+      modalVideo.src = embedURL;
+    }
+    function closeVideo() {
+      const modal = document.getElementById('videoModal');
+      const modalVideo = document.getElementById('modalVideo');
+      modalVideo.src = '';
+      modal.style.display = 'none';
     }
   </script>
 </body>
